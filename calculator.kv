@@ -1,0 +1,211 @@
+<ItemButton@MDFillRoundFlatButton>
+
+    text_size:self.size
+
+<Calc>:
+    textbox1:txt1
+    textbox2:txt2
+    toolbar:tool
+    bt:start
+    bt1:skip
+    raw_data:''
+    BoxLayout:
+        orientation:'vertical'
+        MDToolbar:
+            id:tool
+            title:'Начало работы:'
+            title_size:dp(15), None
+            md_bg_color:0.2,0.2,0.2,1
+            specific_text_color:0,.6,.8,1
+            elevation:0
+        GridLayout:
+            padding:20
+            cols:1
+            size_hint_y:'.8dp'
+            MDLabel:
+                id:txt1
+                bold:True
+                theme_text_color:'Custom'
+                text_color:1,1,1,0.8
+                halign:'right'
+                font_size:45
+                size_hint_y:None
+            MDLabel:
+                id:txt2
+                theme_text_color:'Custom'
+                text_color:1,1,1,1
+                size_hint_y:None
+                font_size:25
+                halign:'right'
+            MDTextButton:
+                text:f"[color=#FFFFFF]Для просмотра истории[/color] нажмите сюда"
+                markup:True
+        GridLayout:
+            spacing:3,5
+            cols:4
+            padding:[15,40,15,0]
+            ItemButton:
+                text:"7"
+                size_hint_x:None
+                height:50
+                md_bg_color:0.3,0.3,0.3,1
+                bold:True
+                font_size:'20sp'
+                on_release:
+                    root.textbox1.text+='7'
+                    root.raw_data +='7'
+            ItemButton:
+                text:"8"
+                size_hint_x:None
+                height:50
+                md_bg_color:0.3,0.3,0.3,1
+                bold:True
+                font_size:'20sp'
+                on_release:
+                    root.textbox1.text+='8'
+                    root.raw_data +='8'
+            ItemButton:
+                text:"9"
+                size_hint_x:None
+                height:50
+                md_bg_color:0.3,0.3,0.3,1
+                bold:True
+                font_size: '20sp'
+                on_release:
+                    root.textbox1.text+='9'
+                    root.raw_data +='9'
+            ItemButton:
+                text:"  Выход  "
+                size_hint_x:None
+                height:50
+                md_bg_color:1,0,0,.4
+                bold:True
+                font_size: '20sp'
+                on_release:
+                    exit(0)
+
+            ItemButton:
+                text:"4"
+                size_hint_x:None
+                height:50
+                md_bg_color:0.3,0.3,0.3,1
+                bold:True
+                font_size: '20sp'
+                on_release:
+                    root.textbox1.text+='4'
+                    root.raw_data +='4'
+            ItemButton:
+                text:"5"
+                size_hint_x:None
+                height:50
+                md_bg_color:0.3,0.3,0.3,1
+                bold:True
+                font_size: '20sp'
+                on_release:
+                    root.textbox1.text+='5'
+                    root.raw_data +='5'
+            ItemButton:
+                text:"6"
+                size_hint_x:None
+                height:50
+                md_bg_color:0.3,0.3,0.3,1
+                bold:True
+                font_size: '20sp'
+                on_release:
+                    root.textbox1.text+='6'
+                    root.raw_data +='6'
+            ItemButton:
+                text:"Очистка"
+                size_hint_x:None
+                height:50
+                md_bg_color:1,0,0,.4
+                bold:True
+                font_size: '20sp'
+                on_release:
+                    root.super_clear()
+
+            ItemButton:
+                text:"1"
+                size_hint_x:None
+                height:50
+                md_bg_color:0.3,0.3,0.3,1
+                bold:True
+                font_size: '20sp'
+                on_release:
+                    root.textbox1.text+='1'
+                    root.raw_data +='1'
+            ItemButton:
+                text:"2"
+                size_hint_x:None
+                height:50
+                font_size: '20sp'
+                md_bg_color:0.3,0.3,0.3,1
+                bold:True
+                on_release:
+                    root.textbox1.text+='2'
+                    root.raw_data +='2'
+            ItemButton:
+                text:"3"
+                size_hint_x:None
+                height:50
+                md_bg_color:0.3,0.3,0.3,1
+                bold:True
+                font_size: '20sp'
+                on_release:
+                    root.textbox1.text+='3'
+                    root.raw_data +='3'
+            ItemButton:
+                text:"      \u00ab        "
+                size_hint_x:None
+                height:50
+                md_bg_color:1,.6,0,.8
+                bold:True
+                font_size: '20sp'
+                on_release:
+                    root.textbox1.text = root.textbox1.text[:-1]
+                    root.raw_data = root.raw_data[:-1]
+                    root.raw_data=root.raw_data.strip('#')
+                
+            ItemButton:
+                text:":"
+                size_hint_x:None
+                height:50
+                md_bg_color:0.3,0.3,0.3,1
+                bold:True
+                font_size: '20sp'
+                on_release:
+                    root.textbox1.text+=':' if root.textbox1.text!=':' else root.textbox1.text[:-1]
+                    root.raw_data +=':' if root.raw_data!=':' else root.raw_data[:-1]
+
+            ItemButton:
+                text: "0"
+                size_hint_x: None
+                height: 50
+                md_bg_color: 0.3, 0.3, 0.3, 1
+                bold: True
+                font_size: '20sp'
+                on_release:
+                    root.textbox1.text += '0'
+                    root.raw_data += '0'
+
+            ItemButton:
+                id:start
+                text:"Ввод"
+                size_hint_x:None
+                height:50
+                md_bg_color:0.3,1,0.3,.3
+                bold:True
+                font_size: '20sp'
+                on_release:
+                    root.work_start(root.raw_data) if root.textbox1.text!='' else None
+                    root.textbox1.text = ''
+            ItemButton:
+                id:skip
+                text:" Пропуск"
+                size_hint_x:None
+                height:55
+                font_size: '20sp'
+                md_bg_color:1,.6,0,.8
+                bold:True
+                on_release:
+                    
